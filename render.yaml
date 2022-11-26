@@ -2,11 +2,13 @@ databases:
   - name: finance_tracker
     databaseName: finance_tracker
     user: finance_tracker
+    plan: free
 
 services:
   - type: web
     name: finance_tracker
     env: ruby
+    plan: free
     buildCommand: "./bin/render-build.sh"
     startCommand: "bundle exec puma -C config/puma.rb"
     envVars:

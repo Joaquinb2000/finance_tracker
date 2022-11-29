@@ -1,0 +1,8 @@
+<% if !flash.keys.empty? %>
+    <div class="alert alert-<%= messages[:alert] ? "warning" : "success" %> alert-dismissible fade show mt-3" role="alert">
+        <% flash.each do |key, msg| %>
+            <strong><%= msg %></strong>
+        <% end %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<% end %>

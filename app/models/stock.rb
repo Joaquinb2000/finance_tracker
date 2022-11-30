@@ -6,7 +6,12 @@ class Stock < ApplicationRecord
       endpoint: 'https://cloud.iexapis.com/v1'
     )
     begin
-      client.quote(ticker_symbol).latest_price
+      stock = client.quote(ticker_symbol.upcase)
+      new(
+        ticker: stock.symbol,
+        name: stock.company_name,
+        last_price: stock.latest_price
+      )
     rescue => exception
       "Ticker symbol does not exist in database"
     end

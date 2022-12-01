@@ -1,13 +1,13 @@
 class StocksController < ApplicationController
   def search
-    if params[:ticker].empty?
-      flash.now[:alert] = "Input cannot be blank"
-      redirect_to my_portfolio_path
-    else
-      @stock = Stock.new_lookup(params[:ticker])
-      flash[:alert] = @stock if @stock.class == String
-      render "users/my_portfolio"
+    respond_to do |format|
+      if params[:ticker].empty?
+        flash.now[:alert] = "Input cannot be blank"
+      else
+        @stock = Stock.new_lookup(params[:ticker])
+        flash.now[:alert] = "Ticker symbol does not exist in database" if @stock.nil?
+      end
+      format.js { render partial: 'stock.js' }
     end
   end
-
 end

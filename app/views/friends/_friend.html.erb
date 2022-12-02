@@ -1,11 +1,13 @@
 
 <%= render "layouts/messages" %>
 <% if @friend%>
+  <>
   <div class="card justify-content-center" style="width: 18rem;">
     <div class="card-body d-flex flex-column">
       <h5 class="card-title"><%= @friend.full_name %></h5>
       <p class="card-text text-center"><%= @friend.email %></p>
     </div>
-      <%= link_to "Add friend", friendships_path(id: @friend.id), method: :post, class: "btn btn-success", remote: true %>
+
+    <%= link_to "Add friend", friendships_path(@friend), method: :post, class: "btn btn-success", remote: true %>
   </div>
 <% end %>

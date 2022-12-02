@@ -1,0 +1,7 @@
+$("#stocks-table-body").append("<%= j render partial: 'friendship.html', locals: { friend: @friend } %>")
+if ($("table").length === 0){
+    <% @friends = [ @friend ]%>
+    $("body").append("<%= j render partial: "friendships_table"%>")
+}
+$('.alert').remove()
+$('#result').prepend("<%= j render partial: 'layouts/messages'%>")

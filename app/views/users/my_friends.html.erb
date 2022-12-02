@@ -1,0 +1,19 @@
+<h1>My Friends</h1>
+<div class="mt-5">
+    <h2 class="text-center">Search Users</h2>
+    <%= form_with url:"search_user", method: :get, id: "searchUser", class:"row d-flex justify-content-center" do |f| %>
+    <div class="col-md-6">
+        <div class="input-group">
+            <%= f.text_field :email, class: "form-control form-control-lg", placeholder: "User email" %>
+            <%= image_submit_tag "search.svg", class: "btn btn-primary rounded-end"%>
+        </div>
+    </div>
+    <% end %>
+</div>
+
+<div class="container d-flex flex-column align-items-center my-5" id="result">
+</div>
+
+<% if !@friends.empty? %>
+ <%= render 'friendships/friendships_table' %>
+<% end %>

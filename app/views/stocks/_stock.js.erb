@@ -1,3 +1,4 @@
 $('.alert').remove()
-$('#result').prepend("<%= j render partial: 'stocks/stock.html', locals: {stock: @stock} %>")
+$('#result .card:first-child').remove()
+$('#result').append("<%= j render partial: 'stocks/stock.html', locals: {stock: @stock} %>")
 $('#ticker').val("")

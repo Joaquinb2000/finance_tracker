@@ -14,7 +14,9 @@
 <div class="container d-flex flex-column align-items-center my-5" id="result">
 </div>
 
-<% if !@stocks.empty?%>
- <%= render 'user_stocks/tracked_stocks', stocks: @stocks%>
+<% if !@stocks.empty? %>
+ <%= render 'user_stocks/table_tracked_stocks'%>
 <% end %>
+
+
 

@@ -1,11 +1,12 @@
 <%= render "layouts/messages" %>
 
 <% if @stock%>
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
+  <div class="card justify-content-center" style="width: 18rem;">
+    <div class="card-body d-flex justify-content-around">
       <h5 class="card-title"><%= stock.ticker %></h5>
-      <p class="card-text"><%= stock.name %></p>
-      <p href="#" class="btn btn-primary"><strong><%= stock.last_price %></strong></p>
+      <p class="card-text text-center"><%= stock.name %></p>
+      <p class="card-text"><strong><%= stock.last_price %></strong></p>
     </div>
+      <%= link_to "Add to portfolio", user_stocks_path(user: current_user, ticker: stock.ticker), method: :post, class: "btn btn-success", remote: true %>
   </div>
 <% end %>

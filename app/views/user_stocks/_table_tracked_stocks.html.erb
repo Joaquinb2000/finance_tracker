@@ -11,7 +11,7 @@
                 </thead>
                 <tbody id= "stocks-table-body">
                     <% @stocks.each do |stock|%>
-                        <%= render "user_stocks/tracked_stocks.html", stock: stock%>
+                        <%= render "user_stocks/tracked_stocks.html", stock: stock, user: user%>
                     <% end %>
                 </tbody>
         </table>

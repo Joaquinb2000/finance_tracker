@@ -1,7 +1,15 @@
-$("#stocks-table-body").append("<%= j render partial: 'friendship.html', locals: { friend: @friend } %>")
-if ($("table").length === 0){
-    <% @friends = [ @friend ]%>
-    $("body").append("<%= j render partial: "friendships_table"%>")
+if($("#friends-table-body").length > 0){
+    $("#friends-table-body").append("<%= j render partial: 'friendship.html', locals: { friend: @user } %>")
+    if ($("table").length === 0){
+        <% @friends = [ @friend ]%>
+        $("body").append("<%= j render partial: "friendships_table"%>")
+    }
+
+    $('#result .card').remove()
+    $('.alert').remove()
+    $('#result').prepend("<%= j render partial: 'layouts/messages'%>")
 }
-$('.alert').remove()
-$('#result').prepend("<%= j render partial: 'layouts/messages'%>")
+else{
+    $('#user-info .card').remove()
+    $('#user-info').append("<%= j render partial: "friends/friend.html", locals:{ is_friend: true}%>")
+}

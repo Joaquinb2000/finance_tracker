@@ -7,4 +7,10 @@ class UsersController < ApplicationController
     @friends = current_user.friends
   end
 
+  def show
+    @user = User.find(params[:id])
+    @stocks = @user.stocks
+    @is_friend = current_user.friends.find_by(email: @user.email )
+    render "show"
+  end
 end

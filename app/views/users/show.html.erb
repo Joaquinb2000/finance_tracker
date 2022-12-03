@@ -1,0 +1,15 @@
+<h1>Profile</h1>
+<h2 class="mt-5 mb-2">User info</h2>
+
+<div class="container d-flex flex-column align-items-center mb-5" id="user-info">
+    <%= render 'friends/friend.html', is_friend: @is_friend %>
+</div>
+
+<h2>Stocks</h2>
+<div id= "user-stocks">
+    <% if !@stocks.empty? %>
+        <%= render 'user_stocks/table_tracked_stocks', user: @user%>
+    <% else %>
+        <h3 class="lead">User is not tracking any stocks</h3>
+    <% end %>
+</div>

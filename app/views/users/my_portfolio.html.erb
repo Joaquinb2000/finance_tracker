@@ -15,7 +15,7 @@
 </div>
 
 <% if !@stocks.empty? %>
- <%= render 'user_stocks/table_tracked_stocks'%>
+ <%= render 'user_stocks/table_tracked_stocks', user: current_user %>
 <% end %>
 
 

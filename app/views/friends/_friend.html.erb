@@ -1,13 +1,29 @@
 
 <%= render "layouts/messages" %>
-<% if @friend%>
-  <>
+
+<% if @user %>
   <div class="card justify-content-center" style="width: 18rem;">
     <div class="card-body d-flex flex-column">
-      <h5 class="card-title"><%= @friend.full_name %></h5>
-      <p class="card-text text-center"><%= @friend.email %></p>
+      <h5 class="card-title"><%= @user.full_name %></h5>
+      <p class="card-text text-center"><%= @user.email %></p>
     </div>
 
-    <%= link_to "Add friend", friendships_path(@friend), method: :post, class: "btn btn-success", remote: true %>
+    <div class="d-flex justify-content-center m-2">
+      <%if current_user != @user%>
+        <div class="container d-flex justify-content-center">
+          <% if is_friend %>
+            <span class="badge bg-secondary d-flex align-items-center">Already friends</span>
+          <% else %>
+            <%= link_to "Add friend", friendships_path(id: @user.id), method: :post, class: "btn btn-sm btn-success", remote: true %>
+          <% end %>
+        </div>
+      <% end %>
+
+      <% if current_page?(search_user_path)%>
+      <div class="container d-flex justify-content-center">
+        <%= link_to "View profile", user_path(@user), class: "btn btn-sm btn-success"%>
+      </div>
+      <% end %>
+    </div>
   </div>
 <% end %>

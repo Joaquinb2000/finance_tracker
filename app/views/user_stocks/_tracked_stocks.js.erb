@@ -1,7 +1,17 @@
-$("#stocks-table-body").append("<%= j render partial: 'tracked_stocks.html', locals: { stock: @stock } %>")
-if ($("table").length === 0){
-    <% @stocks = [@stock]%>
-    $("body").append("<%= j render partial: "table_tracked_stocks"%>")
-}
 $('.alert').remove()
-$('#result').prepend("<%= j render partial: 'layouts/messages'%>")
+if($("#result").length > 0){
+    $('#result .card').remove()
+    $("#stocks-table-body").prepend("<%= j render partial: 'tracked_stocks.html', locals: { stock: @stock, user: current_user } %>")
+
+    if ($("table").length === 0){
+        <% @stocks = [@stock]%>
+        $("body").append("<%= j render partial: "table_tracked_stocks", locals: {user: current_user }%>")
+    }
+
+    $('#result').prepend("<%= j render partial: 'layouts/messages'%>")
+}
+else{
+    $("#<%= @stock.ticker %>").remove()
+    $("#user-stocks").prepend("<%= j render partial: 'layouts/messages'%>")
+    $("#stocks-table-body").prepend("<%= j render partial: 'tracked_stocks.html', locals: { stock: @stock, user: @user } %>")
+}

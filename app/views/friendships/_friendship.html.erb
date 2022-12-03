@@ -3,6 +3,9 @@
         <th scope="row"><%= friend.first_name %></th>
         <td><%= friend.last_name %></td>
         <td><%= friend.email %></td>
-        <td><%=link_to "Remove", friendship_path(friend), method: :delete, class: "btn btn-warning", data:{confirm: "Are you sure?"}%></td>
+        <td class="d-flex justify-content-between">
+            <div ><%=link_to "Remove", friendship_path(friend), method: :delete, class: "btn btn-sm btn-warning", data:{confirm: "Are you sure?"}%></div class= "col">
+            <div ><%=link_to "Profile", user_path(friend), class: "btn btn-sm btn-success"%></div class= "col">
+        </td>
     </tr>
 <% end %>

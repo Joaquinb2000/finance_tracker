@@ -2,17 +2,18 @@ class Friendship < ApplicationRecord
   belongs_to :user
   belongs_to :friend, class_name: 'User'
 
-  validate :cant_befriend_oneself, :is_friend_already
+  validate :befriendable
 
-  def cant_befriend_oneself
-    if user_id == friend_id
-      errors.add(:users, "can't befriend themselves")
-    end
+  def befriendable
+    errors.add(:users, "can't befriend themselves") if befriending_oneself
+    errors.add(:users, "are friends already") if is_friend
   end
 
-  def is_friend_already
-    if Friendship.find_by(user_id: user_id, friend_id: friend_id)
-      errors.add(:users, "are friends already")
-    end
+  def befriending_oneself
+    user_id == friend_id
+  end
+
+  def is_friend
+    !Friendship.find_by(user_id: user_id, friend_id: friend_id).nil?
   end
 end

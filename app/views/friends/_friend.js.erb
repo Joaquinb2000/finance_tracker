@@ -1,4 +1,5 @@
+
 $('.alert').remove()
-$('#result .card:first-child').remove()
-$('#result').append("<%= j render partial: 'friends/friend.html' %>")
+$('#result .card').remove()
+$('#result').append("<%= j render partial: 'friends/friend.html', locals: {is_friend: @friendship.is_friend} %>")
 $('#email').val("")
